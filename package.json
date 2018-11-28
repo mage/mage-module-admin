@@ -12,7 +12,6 @@
     "test:cpd": "  echo 'Check the codebase for copy-pasted code' &&  jscpd --config .cpd.yaml",
     "test:unit": " echo 'Run unit tests' &&                           mocha --compilers ts:ts-node/register -R mocha-reporter ./test/index.ts",
     "test:coverage": " echo 'Run unit tests and check coverage level' &&  nyc --check-coverage --reporter=text --reporter=html npm run test:unit",
-    "test:git": "  echo 'Make sure all commits are signed' &&         git-signed",
     "test": "run-s test:*"
   },
   "nyc": {

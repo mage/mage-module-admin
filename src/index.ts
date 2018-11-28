@@ -14,7 +14,7 @@ export interface ILoginResponse {
 }
 
 /**
- *
+ * Base admin module
  */
 export class AbstractAdminModule extends EventEmitter {
   public setup(_state: mage.core.IState, callback: (error?: Error) => void) {
