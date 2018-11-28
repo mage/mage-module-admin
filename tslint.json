@@ -73,7 +73,7 @@
     "object-literal-shorthand": true,
     "only-arrow-functions": false,
     "one-variable-per-declaration": true,
-    "prefer-function-over-method": true,
+    "prefer-function-over-method": false,
     "semicolon": [true, "never"],
     "space-before-function-paren": [true, {"anonymous": "always", "named": "never", "asyncArrow": "always"}],
     "trailing-comma": false,

@@ -5,11 +5,17 @@ import * as util from 'util'
 const register = util.promisify(mage.auth.register)
 const login = util.promisify(mage.auth.login)
 
+/**
+ * Minimal date a login response must return to mage-admin
+ */
 export interface ILoginResponse {
   userId: string
   email: string
 }
 
+/**
+ *
+ */
 export class AbstractAdminModule extends EventEmitter {
   public setup(_state: mage.core.IState, callback: (error?: Error) => void) {
     mage.on('runState', (runState: string) => {
