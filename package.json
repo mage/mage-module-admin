@@ -1,0 +1,70 @@
+{
+  "name": "mage-module-admin",
+  "version": "0.0.1",
+  "description": "Static data module, including a Google Spreadsheet add-on to manage exports and imports",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "postinstall": "node -e \"process.exit(require('is-there')('./lib') ? 0 : 1)\" || npm run build",
+    "build": "tsc --project ./src",
+    "prepublish": "run-s test build",
+    "test:lint": " echo 'Check TypeScript code for style issues' &&   tslint --type-check --format codeFrame --project .",
+    "test:cpd": "  echo 'Check the codebase for copy-pasted code' &&  jscpd --config .cpd.yaml",
+    "test:unit": " echo 'Run unit tests' &&                           mocha --compilers ts:ts-node/register -R mocha-reporter ./test/index.ts",
+    "test:coverage": " echo 'Run unit tests and check coverage level' &&  nyc --check-coverage --reporter=text --reporter=html npm run test:unit",
+    "test:git": "  echo 'Make sure all commits are signed' &&         git-signed",
+    "test": "run-s test:*"
+  },
+  "nyc": {
+    "lines": 100,
+    "statements": 100,
+    "functions": 100,
+    "branches": 100,
+    "include": [
+      "src/*.ts",
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "typings"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "cache": "true",
+    "instrument": "true",
+    "report-dir": "./coverage-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mage/mage-module-admin.git"
+  },
+  "keywords": [
+    "mage",
+    "validator",
+    "typescript"
+  ],
+  "author": "Marc Trudel <mtrudel@wizcorp.jp>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mage/mage-module-admin/issues"
+  },
+  "homepage": "https://github.com/mage/mage-module-admin#readme",
+  "devDependencies": {
+    "@types/mocha": "5.2.5",
+    "@types/node": "10.12.10",
+    "git-message": "2.0.2",
+    "jscpd": "1.0.3",
+    "mage": "github:mage/mage#master",
+    "mocha": "5.2.0",
+    "mocha-reporter": "0.1.1",
+    "npm-run-all": "4.1.5",
+    "nyc": "13.1.0",
+    "ts-node": "7.0.1",
+    "tslint": "5.11.0",
+    "typescript": "3.1.6"
+  },
+  "dependencies": {}
+}
